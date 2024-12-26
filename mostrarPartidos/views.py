@@ -7,3 +7,6 @@ def verPartidos(request):
     data = json.loads(DatosEnJson)
     return render(request, 'index.html', {
         'games':data})
+
+def verPartidosAyer(req):
+    return True
