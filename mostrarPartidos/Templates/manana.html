@@ -1,0 +1,12 @@
+{% block content %}
+  <div class="date-partidos">PARTIDOS AYER {{fecha}}</div>
+  <div class="partidos-container">
+    {% for id_partido, partido in mapaPartidos.items %}
+    <div class="partido">
+      <div class="partido-info">
+        <span>{{ partido.equipo1 }} {{ partido.puntos1 }} - {{ partido.puntos2 }} {{ partido.equipo2 }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
