@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 urlpatterns=[
-    path ('', views.verPartidos)
+    path ('', views.verPartidos),
+    path ('manana/', views.verPartidosManana)
     
 ]
