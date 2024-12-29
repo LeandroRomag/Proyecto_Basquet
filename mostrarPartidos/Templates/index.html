@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
 
-{% for game in games %}
-<p>{{game.homeTeam.teamName}}</p>
-<p>{{game.homeTeam.score}}</p>
-<p>{{game.awayTeam.teamName}}</p>
-<p>{{game.awayTeam.score}}</p>
-{% endfor %}
+{% block content %}
+    {% for game in games %}
+    <p>{{game.homeTeam.teamName}}</p>
+    <p>{{game.homeTeam.score}}</p>
+    <p>{{game.awayTeam.teamName}}</p>
+    <p>{{game.awayTeam.score}}</p>
+    {% endfor %}
+{% endblock %}

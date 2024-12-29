@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/estilos.css' %}">
+    <title>promenba</title>
+</head>
+<body>
+    <header>
+        <!-- Contenido del header -->
+        <h1>PROMENBA (ICONO)</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/ayer">Ayer</a></li>
+                <li><a href="/manana">Mañana</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Aquí se mostrará el contenido específico de cada vista -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Contenido del footer -->
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

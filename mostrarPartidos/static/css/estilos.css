@@ -1,0 +1,43 @@
+.partidos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ccd1d1;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .partido {
+    margin: 20px;
+    padding: 20px;
+    width: calc(33.33% - 40px);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .partido-info {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .partido-info span {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .partido {
+      width: calc(50% - 40px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .partido {
+      width: 100%;
+    }
+  }
