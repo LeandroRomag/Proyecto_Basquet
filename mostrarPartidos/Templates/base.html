@@ -12,16 +12,18 @@
     <header>
         <!-- Contenido del header -->
         <h1>PROMENBA (ICONO)</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/ayer">Ayer</a></li>
-                <li><a href="/manana">Mañana</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
+        <div class="navegador">
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/ayer">Ayer</a></li>
+                    <li><a href="/manana">Mañana</a></li>
+                </ul>
+            </nav>
+        </div>
         {% block content %}
         <!-- Aquí se mostrará el contenido específico de cada vista -->
         {% endblock %}
