@@ -8,6 +8,8 @@
     <div class="partido">
       <div class="partido-info">
         <span>{{ partido.equipo1 }} {{ partido.puntos1 }} - {{ partido.puntos2 }} {{ partido.equipo2 }}</span>
+        <img src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo">
+        <img src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo">
       </div>
     </div>
     {% endfor %}

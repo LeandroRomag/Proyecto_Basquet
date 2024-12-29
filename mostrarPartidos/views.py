@@ -32,15 +32,17 @@ def verPartidosAyer(request):
         id_partido = partido[2]
         equipo = partido[5]+" "+partido[6]
         puntos = partido[22]
-        print(partido)
+        logo = f'{equipo.replace(" ", "")}Logo.png'
 
         # Si el ID del partido no existe, inicializamos con los datos actuales
         if id_partido not in mapaPartidos:
             mapaPartidos[id_partido] = {
                 "equipo1": equipo,
                 "puntos1": puntos,
+                "equipo1Logo" : logo,
                 "equipo2": None,
                 "puntos2": None,
+                "equipo2Logo" : None,
                 "escudoEquipo2" : None,
             }
         else:
@@ -48,11 +50,7 @@ def verPartidosAyer(request):
             if mapaPartidos[id_partido]["equipo2"] is None:
                 mapaPartidos[id_partido]["equipo2"] = equipo
                 mapaPartidos[id_partido]["puntos2"] = puntos
+                mapaPartidos[id_partido]["equipo2Logo"] = logo
     
     return render(request,"ayer.html",{"mapaPartidos": mapaPartidos,"fecha":ayer})
 
-
-def obtener_escudo(equipo):
-    pagina = wikipedia.page(equipo)
-    imagen = pagina.images[0]
-    return imagen if imagen.endswith(".png") else None
