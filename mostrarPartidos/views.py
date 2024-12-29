@@ -3,7 +3,6 @@ from nba_api.live.nba.endpoints import scoreboard
 from nba_api.stats.endpoints import scoreboardv2
 from datetime import datetime, timedelta
 from nba_api.stats.static import teams
-from datetime import date
 # Create your views here.
 f = "{gameId}: {awayTeam} {score1} vs. {score2} {homeTeam}"
 team_dict = {team["id"]: team["full_name"] for team in teams.get_teams()}
