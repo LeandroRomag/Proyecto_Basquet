@@ -38,7 +38,7 @@
             teclasPrecionadas.innerHTML = texto; // Actualiza el contenido aquí
             divContenidoJugadores.innerHTML = "";
             jugadores.forEach(jugador => {
-                divContenidoJugadores.innerHTML += `<p>${jugador.full_name}</p>`;
+                divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
             });
         })
         .catch(error => console.error('Error:', error));

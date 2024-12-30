@@ -15,7 +15,8 @@ def recibidorDeEvento(req):
     else:
         query = req.POST["nombre"]
         return redirect('/jugador/' + query)
-    
+
+#FUNCIONALIDAD QUE MUESTRA EL JUGADOR LUEGO DE OBTENERLO DESDE EL FORMULARIO
 def mostrarJugador(req,nombre_jugador):
     jugador = players.find_players_by_full_name(nombre_jugador)
     jugadorStats = playercareerstats.PlayerCareerStats(player_id=jugador[0]["id"])
@@ -23,11 +24,19 @@ def mostrarJugador(req,nombre_jugador):
     jugadorRetorno = {
         "nombre" : jugador[0]["full_name"],
         "id" : jugador[0]["id"],
-        "estadisticasTemporadaRegular" : jugadorStatsDICT['resultSets'][0]['rowSet'][len(jugadorStatsDICT['resultSets'][0]['rowSet'])-1],
-        "estadisticasPlayOff" : jugadorStatsDICT['resultSets'][2]['rowSet'][len(jugadorStatsDICT['resultSets'][2]['rowSet'])-1]
+        "estadisticasTemporadaRegular": safe_get(jugadorStatsDICT, 0),
+        "estadisticasPlayOff": safe_get(jugadorStatsDICT, 2)
     }
     return render(req,"datosJugador.html",{"datos" : jugadorRetorno})
 
+#FUNCIONALIDAD POR SI EL JUGADOR NUNCA JUGO PLAY OFF, ANTES SE ROMPIA SI NUNCA JUGO PLAY OFF
+def safe_get(stats_dict, result_set_index, row_index=-1):
+    try:
+        return stats_dict['resultSets'][result_set_index]['rowSet'][row_index]
+    except (KeyError, IndexError):
+        return None
+
+#FUNCIONALIDAD QUE TRABAJA CON EL PROMPT ENVIADO DESDE FORM, LA FUNCIONALIDAD ESTA EN LA VIEW
 def buscar_jugadores(request):
     if request.method == 'POST':
         data = json.loads(request.body)
