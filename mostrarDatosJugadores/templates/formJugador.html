@@ -1,0 +1,46 @@
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button>Buscar</button>
+    <div id="teclas-precionadas"></div>
+    <div id="miDiv">
+    </div>
+</form>
+
+<script>
+    const inputNombre = document.getElementById('id_nombre');
+    const teclasPrecionadas = document.getElementById('teclas-precionadas');
+    const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value; //SIRVE PARA CSRF
+    const divContenidoJugadores = document.getElementById('miDiv');
+    let texto = '';
+
+    inputNombre.addEventListener('keyup', async function(event) {
+        const teclaPrecionada = event.key;
+        
+        if (event.key === "Backspace"){
+            texto = texto.slice(0, -1);
+        }else{
+            texto += teclaPrecionada;
+        }
+
+        fetch('/jugador/buscar_jugadores/datos', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({nombre: texto})
+        })
+        .then(response => response.json())
+        .then(data => {
+            const jugadores = data.jugadores;
+            teclasPrecionadas.innerHTML = texto; // Actualiza el contenido aquí
+            divContenidoJugadores.innerHTML = "";
+            jugadores.forEach(jugador => {
+                divContenidoJugadores.innerHTML += `<p>${jugador.full_name}</p>`;
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>

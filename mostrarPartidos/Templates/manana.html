@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {% block content %}
   <div class="date-partidos">PARTIDOS MAÑANA {{fecha}}</div>
   <div class="partidos-container">
@@ -5,6 +7,10 @@
     <div class="partido">
       <div class="partido-info">
         <span>{{ partido.equipo1 }} {{ partido.puntos1 }} - {{ partido.puntos2 }} {{ partido.equipo2 }}</span>
+        <div class="imagenes">
+          <img  class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
+          <img  class="img-equipo2" src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo2">
+        </div>
       </div>
     </div>
     {% endfor %}

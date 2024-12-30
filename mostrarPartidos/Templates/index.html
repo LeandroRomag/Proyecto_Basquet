@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
-<<<<<<< HEAD
 {% block content %}
-    {% for game in games %}
-    <p>{{game.homeTeam.teamName}}</p>
-    <p>{{game.homeTeam.score}}</p>
-    <p>{{game.awayTeam.teamName}}</p>
-    <p>{{game.awayTeam.score}}</p>
+  <div class="date-partidos">PARTIDOS HOY</div>
+  <div class="partidos-container">
+    {% for partido in games %}
+    <div class="partido">
+      <div class="partido-info">
+        <span>{{ partido.equipoLocalNombre }} {{ partido.puntosLocal }} - {{ partido.puntosVisitante }} {{ partido.equipoVisitanteNombre }}</span>
+        <div class="imagenes">
+          <img  class="img-equipo1" src="/static/img/{{ partido.logoLocal }}" alt="Logo del equipo1">
+          <img  class="img-equipo2" src="/static/img/{{ partido.logoVisitante }}" alt="Logo del equipo2">
+        </div>
+      </div>
+    </div>
     {% endfor %}
+  </div>
 {% endblock %}
-=======
-{% for game in games %}
-<p>{{game}}</p>
-{% endfor %}
->>>>>>> leandro
