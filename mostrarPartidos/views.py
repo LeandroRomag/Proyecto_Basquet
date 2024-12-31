@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from nba_api.live.nba.endpoints import scoreboard
 from nba_api.stats.endpoints import scoreboardv2
+from nba_api.live.nba.endpoints import boxscore
 
 from datetime import datetime, timedelta
 
@@ -13,7 +14,6 @@ def verPartidos(request):
         equipoVisitanteNombre = item["awayTeam"]["teamCity"]+" "+item["awayTeam"]["teamName"]
         puntosLocal = item["homeTeam"]["score"]
         puntosVisitante = item["awayTeam"]["score"]
-        print(equipoLocalNombre)
         logoLocal = f'{equipoLocalNombre.replace(" ", "")}Logo.png'
         logoVisitante = f'{equipoVisitanteNombre.replace(" ", "")}Logo.png'
         games.append({
@@ -22,7 +22,8 @@ def verPartidos(request):
             "puntosLocal" : puntosLocal,
             "puntosVisitante" : puntosVisitante,
             "logoLocal" : logoLocal,
-            "logoVisitante" : logoVisitante
+            "logoVisitante" : logoVisitante,
+            "gameId" : item['gameId']
         })
     return render(request, 'index.html', {'games':games})
 
@@ -94,6 +95,7 @@ def verPartidosAyer(request):
                 "puntos2": None,
                 "equipo2Logo" : None,
                 "escudoEquipo2" : None,
+                "gameId" : id_partido
             }
         else:
             # Si ya existe, completamos los datos faltantes
@@ -104,5 +106,9 @@ def verPartidosAyer(request):
     
     return render(request,"ayer.html",{"mapaPartidos": mapaPartidos,"fecha":ayer})
 
+def informacionDetalladaPartido(request,idPartido):
+    boxScoreInit = boxscore.BoxScore(idPartido)
+    datos = boxScoreInit.get_dict()
+    return render(request,"partidoDetalle.html",{"datos":datos})
 
 

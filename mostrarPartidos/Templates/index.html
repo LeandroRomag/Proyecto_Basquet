@@ -7,6 +7,9 @@
     <div class="partido">
       <div class="partido-info">
         <span>{{ partido.equipoLocalNombre }} {{ partido.puntosLocal }} - {{ partido.puntosVisitante }} {{ partido.equipoVisitanteNombre }}</span>
+        {% if partido.puntosLocal > 0 or partido.puntosVisitante > 0 %}
+          <a href="/partido/{{ partido.gameId }}">+</a>
+        {% endif %}
         <div class="imagenes">
           <img  class="img-equipo1" src="/static/img/{{ partido.logoLocal }}" alt="Logo del equipo1">
           <img  class="img-equipo2" src="/static/img/{{ partido.logoVisitante }}" alt="Logo del equipo2">
@@ -16,3 +19,5 @@
     {% endfor %}
   </div>
 {% endblock %}
+
+

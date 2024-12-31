@@ -3,5 +3,6 @@ from . import views
 urlpatterns=[
     path ('', views.verPartidos),
     path ('ayer/', views.verPartidosAyer),
-    path ('manana/', views.verPartidosManana)
+    path ('manana/', views.verPartidosManana),
+    path ('partido/<str:idPartido>/', views.informacionDetalladaPartido),
 ]
