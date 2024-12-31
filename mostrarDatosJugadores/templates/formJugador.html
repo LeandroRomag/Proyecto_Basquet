@@ -16,13 +16,33 @@
 
     inputNombre.addEventListener('keyup', async function(event) {
         const teclaPrecionada = event.key;
+
+        const teclasEspeciales = [
+        "Alt",
+        "AltGraph",
+        "CapsLock",
+        "Meta",
+        "NumLock",
+        "ScrollLock",
+        "Shift",
+        "Symbol",
+        "SymbolLock",
+        ];
+    
+        if (teclasEspeciales.includes(teclaPrecionada)) {
+            // Ignora la tecla especial
+            return;
+        }
         
         if (event.key === "Backspace"){
             texto = texto.slice(0, -1);
-            if (inputNombre.value.trim()===""){
-                texto="";
-            }
-        }else{
+        if (inputNombre.value.trim()===""){
+            texto="";
+        }
+        } else if (event.key === "Control") {
+            // Si se ha pegado texto, actualiza el valor de texto
+            texto = inputNombre.value.trim();
+        } else {
             texto += teclaPrecionada;
         }
 
@@ -42,7 +62,7 @@
             divContenidoJugadores.innerHTML = "";
             if (inputNombre.value!=""){
             jugadores.forEach(jugador => {
-                divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
+                divContenidoJugadores.innerHTML += <a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>;
                 });
             }
         })

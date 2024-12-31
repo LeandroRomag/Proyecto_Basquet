@@ -50,7 +50,7 @@ def verPartidosManana(request):
         if id_partido not in mapaPartidos:
             mapaPartidos[id_partido] = {
                 "equipo1": equipo,
-                "puntos1": puntos,
+                "puntos1": 0,
                 "equipo1Logo" : logo,
                 "equipo2": None,
                 "puntos2": None,
@@ -61,7 +61,7 @@ def verPartidosManana(request):
             # Si ya existe, completamos los datos faltantes
             if mapaPartidos[id_partido]["equipo2"] is None:
                 mapaPartidos[id_partido]["equipo2"] = equipo
-                mapaPartidos[id_partido]["puntos2"] = puntos
+                mapaPartidos[id_partido]["puntos2"] = 0
                 mapaPartidos[id_partido]["equipo2Logo"] = logo
 
     return render(request,"manana.html",{"mapaPartidos": mapaPartidos,"fecha":manana})
@@ -110,5 +110,7 @@ def informacionDetalladaPartido(request,idPartido):
     boxScoreInit = boxscore.BoxScore(idPartido)
     datos = boxScoreInit.get_dict()
     return render(request,"partidoDetalle.html",{"datos":datos})
+
+
 
 

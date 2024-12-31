@@ -1,8 +1,9 @@
 
+{% load conversion %}
 <table border="1">
     <thead>
       <tr>
-        <th>Equipos</th>
+        <th >Equipos</th>
         {% for item in datos.game.homeTeam.periods %}
         {% if item.period == 1 %}
         <th>Primer Cuarto</th>
@@ -68,3 +69,116 @@
       </tr>
     </tbody>
   </table>
+
+<div class="Contenedor-tablas-estadisticas">
+  
+  <table border="1">
+    <caption>
+    <h3>{{datos.game.homeTeam.teamName}}</h3>
+    </caption>
+    <thead>
+      <tr>
+        <th>Jugador</th>
+        <th>Posición</th>
+        <th>Minutos</th>
+        <th>Puntos</th>
+        <th>Rebotes</th>
+        <th>Asistencias</th>
+        <th>Faltas</th>
+        <th>Pérdidas</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for jugador in datos.game.homeTeam.players %}
+      <tr>
+        <td>
+          {{jugador.name}}
+        </td>
+        <td>
+          {{jugador.position}}
+        </td>
+        <td>
+          {{ jugador.statistics.minutes|clean_duration }}
+        </td>
+        <td>
+          {{jugador.statistics.points}}
+        </td>
+        <td>
+          {{jugador.statistics.reboundsTotal}}
+        </td>
+        <td>
+          {{jugador.statistics.assists}}
+        </td>
+        <td>
+          {{jugador.statistics.foulsPersonal}}
+        </td>
+        <td>
+          {{jugador.statistics.turnovers}}
+        </td>
+        <td>
+          {% if jugador.status == "ACTIVE" %}
+          Disponible
+          {% else %}
+          No Disponible
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <table border="1">
+      <caption>
+        <h3>{{datos.game.awayTeam.teamName}}</h3>
+      </caption>
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Posición</th>
+          <th>Minutos</th>
+          <th>Puntos</th>
+          <th>Rebotes</th>
+          <th>Asistencias</th>
+          <th>Faltas</th>
+          <th>Pérdidas</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for jugador in datos.game.awayTeam.players %}
+        <tr>
+          <td>
+            {{jugador.name}}
+          </td>
+          <td>
+            {{jugador.position}}
+          </td>
+          <td>
+            {{ jugador.statistics.minutes|clean_duration }}
+          </td>
+          <td>
+            {{jugador.statistics.points}}
+          </td>
+          <td>
+            {{jugador.statistics.reboundsTotal}}
+          </td>
+          <td>
+            {{jugador.statistics.assists}}
+          </td>
+          <td>
+            {{jugador.statistics.foulsPersonal}}
+          </td>
+          <td>
+            {{jugador.statistics.turnovers}}
+          </td>
+          <td>
+            {% if jugador.status == "ACTIVE" %}
+            Disponible
+            {% else %}
+            No Disponible
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+  </tbody>
+</table>
