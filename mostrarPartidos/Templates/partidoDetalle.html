@@ -1,1 +1,70 @@
-{{datos}}
+
+<table border="1">
+    <thead>
+      <tr>
+        <th>Equipos</th>
+        {% for item in datos.game.homeTeam.periods %}
+        {% if item.period == 1 %}
+        <th>Primer Cuarto</th>
+        {% elif item.period == 2 %}
+        <th>Segundo Cuarto</th>
+        {% elif item.period == 3 %}
+        <th>Tercer Cuarto</th>
+        {% elif item.period == 4 %}
+        <th>Cuarto Cuarto</th>
+        {% elif item.period == 5 %}
+        <th>Overtime 1</th>
+        {% elif item.period == 6 %}
+        <th>Overtime 2</th>
+        {% elif item.period == 7 %}
+        <th>Overtime 3</th>
+        {% endif %}
+        {% endfor %}
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{datos.game.homeTeam.teamName}}</td>
+        {% for item in datos.game.homeTeam.periods %}
+        {% if item.period == 1 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 2 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 3 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 4 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 5 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 6 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 7 %}
+        <td>{{item.score}}</td>
+        {% endif %}
+        {% endfor %}
+        <td>{{datos.game.homeTeam.score}}</td>
+      </tr>
+      <tr>
+        <td>{{datos.game.awayTeam.teamName}}</td>
+        {% for item in datos.game.awayTeam.periods %}
+        {% if item.period == 1 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 2 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 3 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 4 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 5 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 6 %}
+        <td>{{item.score}}</td>
+        {% elif item.period == 7 %}
+        <td>{{item.score}}</td>
+        {% endif %}
+        {% endfor %}
+        <td>{{datos.game.awayTeam.score}}</td>
+      </tr>
+    </tbody>
+  </table>

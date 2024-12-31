@@ -19,6 +19,9 @@
         
         if (event.key === "Backspace"){
             texto = texto.slice(0, -1);
+            if (inputNombre.value.trim()===""){
+                texto="";
+            }
         }else{
             texto += teclaPrecionada;
         }
@@ -37,9 +40,11 @@
             const jugadores = data.jugadores;
             teclasPrecionadas.innerHTML = texto; // Actualiza el contenido aquí
             divContenidoJugadores.innerHTML = "";
+            if (inputNombre.value!=""){
             jugadores.forEach(jugador => {
                 divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
-            });
+                });
+            }
         })
         .catch(error => console.error('Error:', error));
     });
