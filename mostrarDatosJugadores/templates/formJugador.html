@@ -63,7 +63,7 @@
             divContenidoJugadores.innerHTML = "";
             if (inputNombre.value!=""){
             jugadores.forEach(jugador => {
-                divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
+                divContenidoJugadores.innerHTML += <a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>;
                 });
             }
         })
