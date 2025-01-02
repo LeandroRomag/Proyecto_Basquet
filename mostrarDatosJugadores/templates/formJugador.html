@@ -1,16 +1,14 @@
-<form action="" method="post">
-    {% csrf_token %}
+<div>
+    <form id="form-buscar" action="" method="post">
+        {% csrf_token %}
         <label for="nombre_jugador">Buscar jugador:</label>
         <input type="text" id="id_nombre" name="nombre_jugador" maxlength="60">
-    <button>Buscar</button>
-    <div id="teclas-precionadas"></div>
-    <div id="miDiv">
-    </div>
-</form>
-
+        <button id="btn-buscar">Buscar</button>
+    </form>
+    <div id="miDiv"></div>
+</div>
 <script>
     const inputNombre = document.getElementById('id_nombre');
-    const teclasPrecionadas = document.getElementById('teclas-precionadas');
     const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value; //SIRVE PARA CSRF
     const divContenidoJugadores = document.getElementById('miDiv');
     let texto = '';
@@ -59,14 +57,25 @@
         .then(response => response.json())
         .then(data => {
             const jugadores = data.jugadores;
-            teclasPrecionadas.innerHTML = texto; // Actualiza el contenido aquí
             divContenidoJugadores.innerHTML = "";
             if (inputNombre.value!=""){
             jugadores.forEach(jugador => {
-                divContenidoJugadores.innerHTML += <a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>;
+                divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
                 });
             }
         })
         .catch(error => console.error('Error:', error));
+    });
+
+    //EVENTO SUBMIT
+
+    const form = document.getElementById('form-buscar');
+    const btnBuscar = document.getElementById('btn-buscar');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nombreJugador = document.getElementById('id_nombre').value;
+        window.location.href = `/jugador/${nombreJugador}`;
     });
 </script>
