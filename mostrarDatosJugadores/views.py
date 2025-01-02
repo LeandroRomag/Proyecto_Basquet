@@ -4,14 +4,11 @@ from nba_api.stats.endpoints import playercareerstats
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 import json
-from .forms import ingresarNombreJugador
 
 # Create your views here.
 def recibidorDeEvento(req):
     if req.method == "GET":
-        return render(req,"formJugador.html", {
-            'form' : ingresarNombreJugador()
-        })
+        return render(req,"formJugador.html")
     else:
         query = req.POST["nombre"]
         return redirect('/jugador/' + query)

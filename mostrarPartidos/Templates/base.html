@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -24,6 +25,8 @@
                 </ul>
             </nav>
         </div>
+        <!-- base.html -->
+        {% include 'formJugador.html' %}
         {% block content %}
         <!-- Aquí se mostrará el contenido específico de cada vista -->
         {% endblock %}

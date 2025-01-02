@@ -1,6 +1,7 @@
 <form action="" method="post">
     {% csrf_token %}
-    {{ form }}
+        <label for="nombre_jugador">Buscar jugador:</label>
+        <input type="text" id="id_nombre" name="nombre_jugador" maxlength="60">
     <button>Buscar</button>
     <div id="teclas-precionadas"></div>
     <div id="miDiv">
