@@ -52,6 +52,10 @@ def obtenerFecha(fecha:datetime):
     scoreboard = scoreboardv2.ScoreboardV2(game_date=fecha)
 
     partidosDict = scoreboard.get_dict()
+    
+    est = pytz.timezone('US/Eastern')  # Zona horaria de Eastern Time (ET)
+
+    argentina = pytz.timezone('America/Argentina/Buenos_Aires')
 
     recorte = partidosDict["resultSets"][1]["rowSet"]
 
@@ -65,7 +69,7 @@ def obtenerFecha(fecha:datetime):
         else:
             puntos=0
         logo = f'{equipo.replace(" ", "")}Logo.png'
-
+        horario= "NO DISPONIBLE"
         # Si el ID del partido no existe, inicializamos con los datos actuales
         if id_partido not in mapaPartidos:
             mapaPartidos[id_partido] = {
@@ -76,6 +80,7 @@ def obtenerFecha(fecha:datetime):
                 "puntos2": None,
                 "equipo2Logo" : None,
                 "equipo2Logo" : None,
+                "fecha_argentina":horario
             }
         else:
             # Si ya existe, completamos los datos faltantes
