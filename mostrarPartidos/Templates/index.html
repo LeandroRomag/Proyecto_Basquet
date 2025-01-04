@@ -9,7 +9,7 @@
         <span>{{ partido.equipo1 }} {{ partido.puntos1 }} - {{ partido.puntos2 }} {{ partido.equipo2 }}</span>
         <span>Horario: {{partido.fecha_argentina}}</span>
         {% if partido.puntosLocal > 0 or partido.puntosVisitante > 0 %}
-          <a href="/partido/{{ partido.gameId }}">+</a>
+          <a href="/partido/{{ id_partido }}">+</a>
         {% endif %}
         <div class="imagenes">
           <img  class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
