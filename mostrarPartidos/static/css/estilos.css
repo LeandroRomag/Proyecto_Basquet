@@ -21,9 +21,46 @@
 }
 
 .logo-img{
-  width: 75px; /* Ancho */
-  height: 75px; /* Alto */
+  width: 200px; /* Ancho */
+  height: 80px; /* Alto */
 }
+
+.navegador nav ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.navegador nav ul li a{
+  text-decoration: none;
+}
+
+/* FORM */
+
+.contenedor-buscador{
+  display: flex;
+  justify-content:flex-end;
+  flex-direction: column;
+  align-items: end;
+}
+
+.form-buscar input{
+  border-radius: 5px;
+}
+
+.form-buscar button{
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+
+.div-jugadores{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
 
 .date-partidos {
   font-size: 24px;
@@ -66,14 +103,20 @@
 
   .partido-info a {
   text-decoration: none;
-  color: #007BFF;
+  color: #cacbdf;
   font-weight: bold;
   }
 
 
   .img-equipo1, .img-equipo2 {
-  width: 60px; 
+  width: 70px; 
   height: 50px;
+  }
+
+  .btn-mas{
+      background-color: black;
+      color: white;
+      border-radius: 5px;
   }
 
 
@@ -101,12 +144,18 @@
 
 .partido-info img {
   margin: 5px 0;
-  background-color: #007BFF;
+  background-color: #cacbdf;
 }
 
 .partido-info p{
   width: 150px; /* Establece un ancho fijo de 200px */
   white-space: nowrap;
   overflow: hidden;
-  background-color: #007BFF;
+  background-color: #cacbdf;
+}
+
+footer {
+  text-align: center;
+  padding: 5px;
+  margin: 5px ;
 }

@@ -13,12 +13,13 @@
     <header>
         <!-- Contenido del header -->
          <div class="logo">
-            <img class="logo-img" src="/static/img/Logo.png" alt="Logo de la pagina">
-            <p>promenba</p>
+            <a href="/"><img class="logo-img" src="/static/img/Logo.png" alt="Logo de la pagina"></a>
          </div>
     </header>
 
     <main>
+        <!-- base.html -->
+        {% include 'formJugador.html' %}
         <div class="navegador">
             <nav>
                 <ul>
@@ -28,8 +29,6 @@
                 </ul>
             </nav>
         </div>
-        <!-- base.html -->
-        {% include 'formJugador.html' %}
         {% block content %}
         <!-- Aquí se mostrará el contenido específico de cada vista -->
         {% endblock %}
@@ -37,7 +36,7 @@
 
     <footer>
         <!-- Contenido del footer -->
-        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+        <p>&copy; 2025 promenba. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>

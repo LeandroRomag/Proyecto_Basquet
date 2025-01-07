@@ -1,16 +1,16 @@
-<div>
-    <form id="form-buscar" action="" method="post">
+<div class="contenedor-buscador">
+    <form id="form-buscar" class="form-buscar" method="post">
         {% csrf_token %}
         <label for="nombre_jugador">Buscar jugador:</label>
         <input type="text" id="id_nombre" name="nombre_jugador" maxlength="60">
         <button id="btn-buscar">Buscar</button>
     </form>
-    <div id="miDiv"></div>
+    <div id="div-jugadores" class="div-jugadores"></div>
 </div>
 <script>
     const inputNombre = document.getElementById('id_nombre');
     const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value; //SIRVE PARA CSRF
-    const divContenidoJugadores = document.getElementById('miDiv');
+    const divContenidoJugadores = document.getElementById('div-jugadores');
     let texto = '';
 
     inputNombre.addEventListener('keyup', async function(event) {

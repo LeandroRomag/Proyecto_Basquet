@@ -5,18 +5,18 @@
   <div class="date-partidos">PARTIDOS AYER {{fecha}}</div>
   <div class="partidos-container">
     {% for id_partido, partido in mapaPartidos.items %}
-    <div class="partido">
-      <div class="partido-info">
-        <img class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
-        <p>{{ partido.equipo1 }}</p>
-        <p>{{ partido.puntos1 }}</p>
-        <p>vs</p>
-        <p>{{ partido.puntos2 }}</p>
-        <p>{{ partido.equipo2 }}</p>
-        <img class="img-equipo2" src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo2">
-        <a href="/partido/{{ id_partido }}">+</a>
-      </div>
-    </div>
+        <div class="partido" onclick="window.location.href='/partido/{{ id_partido }}';">
+          <div class="partido-info">
+            <img class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
+            <p>{{ partido.equipo1 }}</p>
+            <p>{{ partido.puntos1 }}</p>
+            <p>vs</p>
+            <p>{{ partido.puntos2 }}</p>
+            <p>{{ partido.equipo2 }}</p>
+            <img class="img-equipo2" src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo2">
+            <a href="/partido/{{ id_partido }}" class="btn-mas">+</a>
+          </div>
+        </div>
     {% endfor %}
   </div>
 {% endblock %}
