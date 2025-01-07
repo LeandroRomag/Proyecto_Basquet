@@ -7,12 +7,14 @@
     {% for id_partido, partido in mapaPartidos.items %}
     <div class="partido">
       <div class="partido-info">
-        <span>{{ partido.equipo1 }} {{ partido.puntos1 }} - {{ partido.puntos2 }} {{ partido.equipo2 }}</span>
+        <img class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
+        <p>{{ partido.equipo1 }}</p>
+        <p>{{ partido.puntos1 }}</p>
+        <p>vs</p>
+        <p>{{ partido.puntos2 }}</p>
+        <p>{{ partido.equipo2 }}</p>
+        <img class="img-equipo2" src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo2">
         <a href="/partido/{{ id_partido }}">+</a>
-        <div class="imagenes">
-          <img  class="img-equipo1" src="/static/img/{{ partido.equipo1Logo }}" alt="Logo del equipo1">
-          <img  class="img-equipo2" src="/static/img/{{ partido.equipo2Logo }}" alt="Logo del equipo2">
-        </div>
       </div>
     </div>
     {% endfor %}

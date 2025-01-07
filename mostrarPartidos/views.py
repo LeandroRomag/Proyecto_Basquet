@@ -6,7 +6,6 @@ from nba_api.live.nba.endpoints import boxscore
 from datetime import datetime, timedelta
 
 import pytz
-from django.utils import timezone
 from datetime import datetime, timedelta
 
 def verPartidos(request):
@@ -16,8 +15,6 @@ def verPartidos(request):
     games={}
     fecha=datetime.now()
     condicion= fecha.strftime("%Y-%m-%d")
-    print(fecha.strftime("%H"))
-    print (board.score_board_date)
     if (board.score_board_date == condicion) | (fecha.strftime("%H") <= "03"):
         for item in result:
             equipoLocalNombre = item["homeTeam"]["teamCity"]+" "+item["homeTeam"]["teamName"]
@@ -52,10 +49,6 @@ def obtenerFecha(fecha:datetime):
     scoreboard = scoreboardv2.ScoreboardV2(game_date=fecha)
 
     partidosDict = scoreboard.get_dict()
-    
-    est = pytz.timezone('US/Eastern')  # Zona horaria de Eastern Time (ET)
-
-    argentina = pytz.timezone('America/Argentina/Buenos_Aires')
 
     recorte = partidosDict["resultSets"][1]["rowSet"]
 
@@ -68,6 +61,7 @@ def obtenerFecha(fecha:datetime):
             puntos = partido[22]
         else:
             puntos=0
+        
         logo = f'{equipo.replace(" ", "")}Logo.png'
         horario= "NO DISPONIBLE"
         # Si el ID del partido no existe, inicializamos con los datos actuales
