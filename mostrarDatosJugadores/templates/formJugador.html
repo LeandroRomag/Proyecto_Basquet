@@ -13,6 +13,28 @@
     const divContenidoJugadores = document.getElementById('div-jugadores');
     let texto = '';
 
+    // Almacenar valor en localStorage
+    inputNombre.addEventListener('input', (e) => {
+      localStorage.setItem('nombreJugador', inputNombre.value);
+    });
+
+    // Recuperar valor de localStorage
+    const nombreJugadorAlmacenado = localStorage.getItem('nombreJugador');
+    if (nombreJugadorAlmacenado) {
+      inputNombre.value = nombreJugadorAlmacenado;
+      texto = nombreJugadorAlmacenado; // Actualiza el valor de texto
+    }
+
+    // Almacenar lista de jugadores en localStorage
+    const jugadoresAlmacenados = localStorage.getItem('jugadores');
+    if (jugadoresAlmacenados) {
+      const jugadores = JSON.parse(jugadoresAlmacenados);
+      divContenidoJugadores.innerHTML = "";
+      jugadores.forEach(jugador => {
+        divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
+      });
+    }
+
     inputNombre.addEventListener('keyup', async function(event) {
         const teclaPrecionada = event.key;
 
@@ -58,11 +80,11 @@
         .then(data => {
             const jugadores = data.jugadores;
             divContenidoJugadores.innerHTML = "";
-            if (inputNombre.value!=""){
             jugadores.forEach(jugador => {
                 divContenidoJugadores.innerHTML += `<a href="/jugador/${jugador.full_name}">${jugador.full_name}</a>`;
-                });
-            }
+            });
+            // Almacenar lista de jugadores en localStorage
+            localStorage.setItem('jugadores', JSON.stringify(jugadores));
         })
         .catch(error => console.error('Error:', error));
     });
@@ -77,4 +99,9 @@
         const nombreJugador = document.getElementById('id_nombre').value;
         window.location.href = `/jugador/${nombreJugador}`;
     });
+
+    // Recargar página cada 10 segundos
+    setInterval(function() {
+      location.reload();
+    }, 10000);
 </script>
