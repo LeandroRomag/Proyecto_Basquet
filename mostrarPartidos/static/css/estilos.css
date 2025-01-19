@@ -159,3 +159,43 @@ footer {
   padding: 5px;
   margin: 5px ;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid #000; /* Líneas negras */
+  padding: 10px;
+}
+td{
+  text-align: center;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+  font-size: 18px; /* Tamaño de fuente para títulos */
+  font-weight: bold; /* Negrita para títulos */
+  text-align: center;
+}
+
+caption {
+  font-size: 24px; /* Tamaño de fuente para títulos de tabla */
+  font-weight: bold; /* Negrita para títulos de tabla */
+  margin-bottom: 10px;
+}
+
+.Contenedor-tablas-estadisticas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+table:nth-child(1) {
+  margin-bottom: 20px;
+}
+

@@ -1,5 +1,21 @@
 
 {% load conversion %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static '../static/css/estilos.css' %}">
+    <title>promenba</title>
+</head>
+<body>
+    <header>
+        <!-- Contenido del header -->
+         <div class="logo">
+            <a href="/"><img class="logo-img" src="/static/img/Logo.png" alt="Logo de la pagina"></a>
+         </div>
+    </header>
 <table border="1">
     <thead>
       <tr>
@@ -74,7 +90,9 @@
   
   <table border="1">
     <caption>
+    
     <h3>{{datos.game.homeTeam.teamName}}</h3>
+    <img class="img-equipo2" src="/static/img2/{{datos.game.homeTeam.teamName }}Logo.png" alt="Logo del equipo2">
     </caption>
     <thead>
       <tr>
@@ -130,6 +148,7 @@
     <table border="1">
       <caption>
         <h3>{{datos.game.awayTeam.teamName}}</h3>
+        <img class="img-equipo2" src="/static/img2/{{datos.game.awayTeam.teamName }}Logo.png" alt="Logo del equipo2">
       </caption>
       <thead>
         <tr>
@@ -182,3 +201,4 @@
         {% endfor %}
   </tbody>
 </table>
+</body>
